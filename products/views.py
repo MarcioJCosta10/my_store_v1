@@ -1,7 +1,25 @@
+from django.http import Http404
+
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 
 from .models import Product
+
+
+class ProductFeaturedListView(ListView):
+    template_name = "products/list.html"
+
+    def get_queryset(self, *args, **kwargs):
+        return Product.objects.featured()
+
+
+class ProductFeaturedDetailView(DetailView):
+    queryset = Product.objects.all().featured()
+    template_name = "products/featured-detail.html"
+
+    # def get_queryset(self, *args, **kwargs):
+    #request = self.request
+    # return Product.objects.featured()
 
 # Class Based View
 
@@ -29,7 +47,6 @@ def product_list_view(request):
 
 
 class ProductDetailView(DetailView):
-    queryset = Product.objects.all()
     template_name = "products/detail.html"
 
     def get_context_data(self, *args, **kwargs):
@@ -38,13 +55,24 @@ class ProductDetailView(DetailView):
         print(context)
         return context
 
+    def get_object(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        instance = Product.objects.get_by_id(pk)
+        if instance is None:
+            raise Http404("Esse produto não existe!")
+        return instance
+
 # Function Based View
 
 
 def product_detail_view(request, pk=None, *args, **kwargs):
-    # instance = Product.objects.get(pk = pk) #get the object id
-    instance = get_object_or_404(Product, pk=pk)
+    instance = Product.objects.get_by_id(pk)
+    print(instance)
+    if instance is None:
+        raise Http404("Esse produto não existe!")
+
     context = {
         'object': instance
     }
+
     return render(request, "products/detail.html", context)
