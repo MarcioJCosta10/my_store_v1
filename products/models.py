@@ -1,5 +1,7 @@
 from enum import unique
 from django.db import models
+from .utils import unique_slug_generator
+from django.db.models.signals import pre_save
 
 # Custom queryset
 
@@ -44,7 +46,7 @@ def get_by_id(self, id):
 
 class Product(models.Model):  # product_category
     title = models.CharField(max_length=120)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(blank = True, unique=True)
     description = models.TextField()
     price = models.DecimalField(
         decimal_places=2, max_digits=20, default=100.00)
@@ -61,3 +63,9 @@ class Product(models.Model):  # product_category
     # python 2
     def __unicode__(self):
         return self.title
+      
+def product_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+    pre_save.connect(product_pre_save_receiver, sender = Product)
