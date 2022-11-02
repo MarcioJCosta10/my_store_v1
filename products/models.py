@@ -67,5 +67,4 @@ class Product(models.Model):  # product_category
 def product_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
-
-    pre_save.connect(product_pre_save_receiver, sender = Product)
+pre_save.connect(product_pre_save_receiver, sender = Product)
