@@ -44,6 +44,11 @@ class Product(models.Model):  # product_category
     featured = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
     objects = ProductManager()
+    
+    
+    def get_absolute_url(self):
+        return "products/{slug}/".format(slug=self.slug)
+    
     # python 3
 
     def __str__(self):
