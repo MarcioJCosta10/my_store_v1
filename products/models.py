@@ -33,8 +33,6 @@ class ProductManager(models.Manager):
         return None
 
 # Create your models here.
-
-
 def get_by_id(self, id):
     qs = self.get_queryset().filter(id=id)
     if qs.count() == 1:

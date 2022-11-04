@@ -9,6 +9,4 @@ class ProductAdmin(admin.ModelAdmin):
 
     class meta:
         model = Product
-
-
 admin.site.register(Product, ProductAdmin)
