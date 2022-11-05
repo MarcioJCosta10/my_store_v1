@@ -2,35 +2,16 @@
 
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
-   <!-- Required meta tags -->
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 </head>
+
 <body>
-  <div class='text-center'>
-    <h1>{{ title }}</h1>
-    <p>{{ content }}</p>
-</div>
-<div class='container'>
-<div class='row'>
-    <div class='col'>
-        <img src="{% static 'img/eCommerce.jpeg' %}" class='img-fluid' />
-        <p>{{ content }}</p>
-    </div>
-</div>
-
-{% if request.user.is_authenticated %}
-<div class='row'>
-  <div class='col'>
-      <h1>Premium</h1>
-      <p>{{ premium_content }}</p>
-  </div>
-</div>
-</div>
-
-{%endif%}
+  
 </body>
 
 </html>
