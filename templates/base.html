@@ -9,12 +9,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    {% include 'base/css.html' %}
     <title>Base Template</title>
   </head>
 
   <body>
-    {% block content %} 
+    {% block content %}
+
     
     {% endblock %}
+    {% include 'base/js.html' %}
   </body>
 </html>
