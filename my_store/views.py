@@ -30,7 +30,6 @@ def contact_page(request):
         "title": "Contact Page",
         "content": "Bem vindo a Contact Page",
         "form": contact_form,
-        "brand": "Novo nome da marca"
 
     }
     if contact_form.is_valid():
