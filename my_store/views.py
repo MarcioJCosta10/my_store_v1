@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 
 from .forms import ContactForm, LoginForm, RegisterForm
 
+
 def home_page(request):
     context = {
         "title": "Home Page",
@@ -28,7 +29,8 @@ def contact_page(request):
     context = {
         "title": "Contact Page",
         "content": "Bem vindo a Contact Page",
-        "form": contact_form
+        "form": contact_form,
+        "brand": "Novo nome da marca"
     }
     if contact_form.is_valid():
         print(contact_form.cleaned_data)
@@ -62,6 +64,8 @@ def login_page(request):
 
 
 User = get_user_model()
+
+
 def register_page(request):
     form = RegisterForm(request.POST or None)
     context = {
