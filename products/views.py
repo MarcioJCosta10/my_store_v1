@@ -1,8 +1,6 @@
 from django.http import Http404
-
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
-
 from .models import Product
 
 
@@ -21,7 +19,7 @@ class ProductFeaturedDetailView(DetailView):
     def get_queryset(self, *args, **kwargs):
         request = self.request
         return Product.objects.featured()
-      
+
 # Class Based View
 
 
