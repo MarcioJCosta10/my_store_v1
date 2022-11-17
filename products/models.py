@@ -48,7 +48,7 @@ class Product(models.Model):  # product_category
 
     def get_absolute_url(self):
         #return "/products/{slug}/".format(slug=self.slug)
-        return reverse("detail", kwargs={"slug": self.slug})
+        return reverse("products:detail", kwargs={"slug": self.slug})
 
     # python 3
 
