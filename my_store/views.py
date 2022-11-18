@@ -18,8 +18,8 @@ def home_page(request):
 
 def about_page(request):
     context = {
-        "title": "About Page",
-        "content": "Bem vindo a About Page"
+        "title": "Página sobre",
+        "content": "Bem vindo a página sobre",
     }
     return render(request, "about/view.html", context)
 
@@ -27,8 +27,8 @@ def about_page(request):
 def contact_page(request):
     contact_form = ContactForm(request.POST or None)
     context = {
-        "title": "Contact Page",
-        "content": "Bem vindo a Contact Page",
+        "title": "Pagina de contato",
+        "content": "Bem vindo a pagina de contato",
         "form": contact_form,
 
     }
