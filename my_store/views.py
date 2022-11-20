@@ -1,5 +1,5 @@
 
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login,logout, get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -79,3 +79,8 @@ def register_page(request):
         new_user = User.objects.create_user(username, email, password)
         print(new_user)
     return render(request, "auth/register.html", context)
+
+def logout_page(request):
+  logout(request)
+  return render(request, "auth/logout.html",{})
+  
