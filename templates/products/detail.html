@@ -5,6 +5,7 @@
   <div class='row'>
     <div class='col'>
       <h1>{{ object.title }} </h1>
+          {{object.timestamp|timesince}}
       <h3>{{ "um titulo qualquer"|title}}</h3>
           {{ object.description|linebreaks }}
           {% if object.image %}
