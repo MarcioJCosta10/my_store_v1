@@ -43,11 +43,12 @@ class Product(models.Model):  # product_category
         decimal_places=2, max_digits=20, default=100.00)
     image = models.FileField(upload_to='products/', null=True, blank=True)
     featured = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(blank=True, null=True)
     active = models.BooleanField(default=True)
     objects = ProductManager()
 
     def get_absolute_url(self):
-        #return "/products/{slug}/".format(slug=self.slug)
+        # return "/products/{slug}/".format(slug=self.slug)
         return reverse("products:detail", kwargs={"slug": self.slug})
 
     # python 3
