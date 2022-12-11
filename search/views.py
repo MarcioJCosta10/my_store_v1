@@ -10,9 +10,9 @@ class SearchProductView(ListView):
       print('Solicitação',request)
       result = request.GET
       print('Resultado',result)
-      query = result.get('q','tenis')#result['q']
+      query = result.get('q',None)#result['q']
       print('Consulta',query)
       if query is not None:
         return Product.objects.filter(title__icontains=query)
-      return Product.objects.none()  
+      return Product.objects.featured()  
       
