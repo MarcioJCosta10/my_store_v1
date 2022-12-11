@@ -7,5 +7,12 @@ class SearchProductView(ListView):
   template_name = "products/list.html"
   def get_queryset(self,*args,**kargs):
       request = self.request
-      return Product.objects.all()  
+      print('Solicitação',request)
+      result = request.GET
+      print('Resultado',result)
+      query = result.get('q','tenis')#result['q']
+      print('Consulta',query)
+      if query is not None:
+        return Product.objects.filter(title__icontains=query)
+      return Product.objects.none()  
       
