@@ -6,7 +6,7 @@ from products.models import Product
 
 
 class SearchProductView(ListView):
-    template_name = "products/list.html"
+    template_name = "search/view.html"
 
     def get_queryset(self, *args, **kargs):
         request = self.request
