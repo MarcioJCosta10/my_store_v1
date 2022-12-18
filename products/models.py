@@ -1,3 +1,4 @@
+from django.db.models import Q
 from enum import unique
 from django.db import models
 from .utils import unique_slug_generator
@@ -13,6 +14,10 @@ class ProductQuerySet(models.query.QuerySet):
 
     def featured(self):
         return self.filter(featured=True, active=True)
+      
+    def search(self, query):
+        lookups = Q(title__contains = query) | Q(description__contains = query)
+        return self.filter(lookups).distinct()
 
 
 class ProductManager(models.Manager):
@@ -31,6 +36,9 @@ class ProductManager(models.Manager):
         if qs.count() == 1:
             return qs.first()
         return None
+      
+    def search(self, query):
+        return self.get_queryset().active().search(query)
 
 # Create your models here.
 
