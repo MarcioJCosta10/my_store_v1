@@ -13,4 +13,11 @@ def cart_home(request):
     context = {
       'teste': test
       }
+    
+    cart_id = request.session.get("cart_id", None)
+    if cart_id is None:
+      print('Create new cart')
+      request.session['cart_id'] = 12
+    else:
+      print('Cart_id exist')      
     return render(request, "carts/home.html", context)
