@@ -1,5 +1,5 @@
 
-from django.contrib.auth import authenticate, login,logout, get_user_model
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -7,6 +7,8 @@ from .forms import ContactForm, LoginForm, RegisterForm
 
 
 def home_page(request):
+    print(request.session.get('first_name', 'Unknow'))
+
     context = {
         "title": "Home Page",
         "content": "Bem vindo a Home Page",
@@ -80,10 +82,10 @@ def register_page(request):
         print(new_user)
     return render(request, "auth/register.html", context)
 
+
 def logout_page(request):
-  logout(request)
-  context={
-    "content" : "Você efetuou logout com sucesso!"
-  }
-  return render(request, "auth/logout.html",context)
-  
+    logout(request)
+    context = {
+        "content": "Você efetuou logout com sucesso!"
+    }
+    return render(request, "auth/logout.html", context)
