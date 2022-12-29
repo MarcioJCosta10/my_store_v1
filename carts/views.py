@@ -4,6 +4,10 @@ from django.shortcuts import render
 
 
 def cart_home(request):
+    print(request.session)
+    print(dir(request.session))
+    key = request.session.session_key
+    print(key)
     request.session['card_id'] = 123
     test = request.session['user']=request.user.username
     context = {
