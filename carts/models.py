@@ -5,7 +5,7 @@ from products.models import Product
 
 User = settings.AUTH_USER_MODEL
 
-class CartManager(models.manager):
+class CartManager(models.Manager):
     def new_or_get(self, request):
         cart_id = request.session.get("cart_id", None)
         qs = self.get_queryset().filter(id = cart_id)
@@ -24,7 +24,7 @@ class CartManager(models.manager):
     def new(self, user = None):
         user_obj = None
         if user is not None:
-            if user.is_authenticate:
+            if user.is_authenticated:
                 user_obj = user
         return self.model.objects.create(user = user_obj)
 
