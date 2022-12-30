@@ -4,8 +4,6 @@ from django.db import models
 from products.models import Product
 
 User = settings.AUTH_USER_MODEL
-<<<<<<< HEAD
-=======
 
 class CartManager(models.Manager):
     def new_or_get(self, request):
@@ -30,8 +28,6 @@ class CartManager(models.Manager):
                 user_obj = user
         return self.model.objects.create(user = user_obj)
       
-
->>>>>>> 42_create_manager_cart
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null = True, blank = True)
     products = models.ManyToManyField(Product, blank = True)
