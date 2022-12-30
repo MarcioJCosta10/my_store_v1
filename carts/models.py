@@ -27,6 +27,7 @@ class CartManager(models.Manager):
             if user.is_authenticated:
                 user_obj = user
         return self.model.objects.create(user = user_obj)
+      
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null = True, blank = True)
