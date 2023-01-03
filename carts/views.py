@@ -14,8 +14,11 @@ def cart_update(request):
   product_obj = Product.objects.get(id=product_id)
   # Create or get instance cart if already exists
   cart_obj, new_obj = Cart.objects.new_or_get(request)
+  if product_obj in cart_obj.products.all():
+     cart_obj.products.remove(product_obj) # cart_obj.products.remove(product_id)
+  else:  
   # The product is added in instance field M2M
-  cart_obj.products.add(product_obj) #cart_obj.products.add(product_id)
+    cart_obj.products.add(product_obj) #cart_obj.products.add(product_id)
   #cart_obj.products.remove(product_obj) #cart_obj.products.remove(product_id)
   #return redirect(product_obj.get_absolute_url())
   #let's  use namespace cart
