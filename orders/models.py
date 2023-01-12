@@ -36,3 +36,15 @@ def pre_save_create_order_id(sender, instance, *args, **kwargs):
         instance.order_id = unique_order_id_generator(instance)
 
 pre_save.connect(pre_save_create_order_id, sender = Order)
+
+def post_save_cart_total(sender, instance, created, *args, **kwargs):
+    if not created:
+        cart_obj = instance
+        cart_total = cart_obj.total
+        cart_id = cart_obj.id
+        qs = Order.objects.filter(cart__id=cart_id)
+        if qs.count() == 1:
+            order_obj = qs.first()
+            order_obj.update_total()
+
+post_save.connect(post_save_cart_total, sender=Cart)
