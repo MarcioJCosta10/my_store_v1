@@ -18,7 +18,7 @@ class Order(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null = True, )
     status = models.CharField(max_length = 120, default = 'created', choices = ORDER_STATUS_CHOICES )
     shipping_total = models.DecimalField(default = 5.99, max_digits = 100, decimal_places = 2)
-    # Order total = models.DecimalField(default = 0.00, max_digits = 100, decimal_places = 2)
+    total = models.DecimalField(default = 0.00, max_digits = 100, decimal_places = 2)
 
     def __str__(self):
         return self.order_id
