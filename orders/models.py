@@ -48,3 +48,11 @@ def post_save_cart_total(sender, instance, created, *args, **kwargs):
             order_obj.update_total()
 
 post_save.connect(post_save_cart_total, sender=Cart)
+
+def post_save_order(sender, instance, created, *args, **kwargs):
+    print("Executando")
+    if created:
+        print("Atualizando")
+        instance.update_total()
+
+post_save.connect(post_save_order, sender=Order)
