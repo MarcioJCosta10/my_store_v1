@@ -2,8 +2,10 @@
 from django.contrib.auth import authenticate, get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from accounts.views import login_page, logout_page
 
-from my_store.forms import ContactForm, RegisterForm
+from .forms import ContactForm
+from accounts.forms import RegisterForm
 
 
 def home_page(request):
