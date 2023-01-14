@@ -36,14 +36,14 @@ def login_page(request):
         else:
             #Retorna uma mensagem de erro de 'invalid login'.
             print("Login inválido")
-    return render(request, "auth/login.html", context)
+    return render(request, "accounts/login.html", context)
   
 def logout_page(request):
     context = {
                 "content": "Você efetuou o logout com sucesso! :)"
               }
     logout(request)
-    return render(request, "auth/logout.html", context)
+    return render(request, "accounts/login.html", context)
 
 def register_page(request):
     form = RegisterForm(request.POST or None)
@@ -57,5 +57,5 @@ def register_page(request):
         password = form.cleaned_data.get("password")
         new_user = User.objects.create_user(username, email, password)
         print(new_user)
-    return render(request, "auth/register.html", context) 
+    return render(request, "accounts/login.html", context) 
   
