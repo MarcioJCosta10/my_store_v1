@@ -5,8 +5,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from carts.views  import cart_home
+from accounts.views import login_page, logout_page, register_page
+from my_store.views import home_page, about_page, contact_page, login_page,logout_page
 
-from .views import home_page, about_page, contact_page, login_page,logout_page, register_page
 urlpatterns = [
     path('', home_page, name='home'),
     path('about/', about_page, name='about'),

@@ -2,7 +2,12 @@ from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.utils.http import url_has_allowed_host_and_scheme
-from my_store.forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm
+
+
+User = get_user_model()
+
+
 def login_page(request):
     form = LoginForm(request.POST or None)
     context = {
@@ -40,7 +45,6 @@ def logout_page(request):
     logout(request)
     return render(request, "accounts/logout.html", context)
 
-User = get_user_model()
 def register_page(request):
     form = RegisterForm(request.POST or None)
     context = {
