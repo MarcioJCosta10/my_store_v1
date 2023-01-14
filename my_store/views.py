@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from .forms import ContactForm
+from my_store.forms import ContactForm, RegisterForm
 
 
 def home_page(request):
@@ -57,9 +57,3 @@ def register_page(request):
     return render(request, "auth/register.html", context)
 
 
-def logout_page(request):
-    logout(request)
-    context = {
-        "content": "Você efetuou logout com sucesso!"
-    }
-    return render(request, "auth/logout.html", context)
