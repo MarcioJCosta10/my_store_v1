@@ -36,7 +36,8 @@ def login_page(request):
         else:
             #Retorna uma mensagem de erro de 'invalid login'.
             print("Login inválido")
-    return render(request, "/accounts/login.html", context)
+    return render(request, "templates/auth/login.html", context)
+  
 def logout_page(request):
     context = {
                 "content": "Você efetuou o logout com sucesso! :)"
