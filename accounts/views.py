@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.utils.http import url_has_allowed_host_and_scheme
-from .forms import LoginForm, RegisterForm
+from accounts.forms import LoginForm, RegisterForm
 
 
 User = get_user_model()
@@ -16,7 +16,7 @@ def login_page(request):
     print("User logged in")
     print(request.user.is_authenticated)
     next_ = request.GET.get('next')
-    next_post = request.POST.get('next').redirect_path = next_ or next_post or None
+    next_post = request.POST.get('next') 
     redirect_path = next_ or next_post or None    
     if form.is_valid():
         print(form.cleaned_data)
@@ -36,8 +36,7 @@ def login_page(request):
         else:
             #Retorna uma mensagem de erro de 'invalid login'.
             print("Login inválido")
-    return render(request, "accounts/login.html", context)
-
+    return render(request, "/accounts/login.html", context)
 def logout_page(request):
     context = {
                 "content": "Você efetuou o logout com sucesso! :)"
@@ -57,5 +56,5 @@ def register_page(request):
         password = form.cleaned_data.get("password")
         new_user = User.objects.create_user(username, email, password)
         print(new_user)
-    return render(request, "accounts/register.html", context) 
+    return render(request, "./register.html", context) 
   
