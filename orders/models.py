@@ -14,6 +14,7 @@ ORDER_STATUS_CHOICES = (
 )
 
 class Order(models.Model):
+    billing_profile = models.ForeignKey(BillingProfile, on_delete=models.CASCADE, null = True, blank = True)
     order_id = models.CharField(max_length = 120, blank = True)
     # billing_profile = ?
     # shipping_address = ?
