@@ -3,6 +3,7 @@ import math
 from django.db import models
 from django.db.models.signals import pre_save, post_save
 from carts.models import Cart
+from billing.models import BillingProfile
 from my_store.utils import unique_order_id_generator
 
 ORDER_STATUS_CHOICES = (
