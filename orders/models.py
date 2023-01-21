@@ -59,6 +59,11 @@ class Order(models.Model):
 def pre_save_create_order_id(sender, instance, *args, **kwargs):
     if not instance.order_id:
         instance.order_id = unique_order_id_generator(instance)
+     # retorna todos os orders com esta instância de cart, 
+    # excluindo aqueles que têm a mesma instância de billing_profile
+    qs = Order.objects.filter(cart = instance.cart).exclude(billing_profile = instance.billing_profile)
+    if qs.exists():
+        qs.update = False
 
 pre_save.connect(pre_save_create_order_id, sender = Order)
 
