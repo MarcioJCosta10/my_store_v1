@@ -43,6 +43,9 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_id
+      
+    objects = OrderManager()
+    
     def update_total(self):
         cart_total = self.cart.total
         shipping_total = self.shipping_total
