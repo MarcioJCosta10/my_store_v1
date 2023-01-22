@@ -2,6 +2,8 @@
 from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save
+
+from accounts.models import GuestEmail
 User = settings.AUTH_USER_MODEL
 # fulano@mail.com -> pode ter 1.000.000.000 billing profiles
 # user fulano@mail.com -> pode ter apenas 1 billing profile
