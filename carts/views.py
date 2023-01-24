@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from accounts.forms import LoginForm, GuestForm
 from accounts.models import GuestEmail
+from addresses.forms import AddressForm
 from billing.models import BillingProfile
 from orders.models import Order
 from products.models import Product
 from .models import Cart
+
 
 def cart_home(request):
     cart_obj, new_obj  = Cart.objects.new_or_get(request)
@@ -38,6 +40,7 @@ def checkout_home(request):
       
     login_form = LoginForm()
     guest_form = GuestForm()
+    address_form = AddressForm()
 
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
     
