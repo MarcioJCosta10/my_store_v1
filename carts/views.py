@@ -3,11 +3,7 @@ from django.shortcuts import render, redirect
 from accounts.forms import LoginForm, GuestForm
 from accounts.models import GuestEmail
 from addresses.forms import AddressForm
-<<<<<<< HEAD
 from addresses.models import Address
-=======
-
->>>>>>> master
 from billing.models import BillingProfile
 from orders.models import Order
 from products.models import Product
