@@ -21,7 +21,7 @@ def is_ajax(request):
 
 def cart_detail_api_view(request):
    cart_obj, new_obj = Cart.objects.new_or_get(request)
-   products = cart_obj.products.all()
+   products = [{"name": x.name, "price": x.price} for x in cart_obj.products.all()]
    return JsonResponse({})
 
 def cart_update(request):
