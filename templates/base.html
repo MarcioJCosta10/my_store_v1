@@ -47,6 +47,10 @@
               }
               const navbarCount = $(".navbar-cart-count")
                   navbarCount.text(data.cartItemCount)
+                  const currentPath = window.location.href
+                  if(currentPath.indexOf("cart")!=-1){
+                  refreshCart()
+                  }
             },
             error: function (errorData) {
               console.log("Erro");
@@ -54,6 +58,9 @@
             },
           });
         });
+        function refreshCart(){
+          console.log("No carrinho atual")
+        }
       });
     </script>
   </body>
