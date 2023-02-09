@@ -25,7 +25,8 @@
           // console.log("O formulário não foi enviado!");
           // o this pega os dados relacionados a esse form
           const thisForm = $(this);
-          const actionEndpoint = thisForm.attr("action");
+          //const actionEndpoint = thisForm.attr("action");
+          const actionEndpoint = thisForm.attr("data-endpoint");
           const httpMethod = thisForm.attr("method");
           const formData = thisForm.serialize();
           $.ajax({
