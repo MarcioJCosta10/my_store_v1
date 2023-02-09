@@ -19,6 +19,11 @@ def cart_home(request):
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
+def cart_detail_api_view(request):
+   cart_obj, new_obj = Cart.objects.new_or_get(request)
+   products = cart_obj.products.all()
+   return JsonResponse({})
+
 def cart_update(request):
     product_id = request.POST.get('product_id')
     # if request.is_ajax():

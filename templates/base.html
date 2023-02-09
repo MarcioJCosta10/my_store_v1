@@ -64,6 +64,23 @@
           const cartTable = $(".cart-table");
           const cartBody = cartTable.find(".cart-body");
           cartBody.html("<h1> Mudou! </h1>");
+
+          const refreshCartUrl= '/api/cart/';
+          const refreshCartMethod='GET';
+          const data = {}
+
+          $.ajax({
+            url: refreshCartUrl,
+            method: refreshCartMethod,
+            data: data,
+            success: function(data){
+              console.log(data)
+            },
+            error: function(errorData){
+              console.log("Erro")
+              console.log("Erro:" errorData)
+            }
+          })
         }
       });
     </script>
