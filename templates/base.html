@@ -60,28 +60,56 @@
           });
         });
         function refreshCart() {
-          console.log("Excluido do carrinho atual");
+          //console.log("Excluído do carrinho atual!")
           const cartTable = $(".cart-table");
           const cartBody = cartTable.find(".cart-body");
-          cartBody.html("<h1> Mudou! </h1>");
-
-          const refreshCartUrl= '/api/cart/';
-          const refreshCartMethod='GET';
-          const data = {}
-
+          //cartBody.html("<h1>Mudou!</h1>")
+          const productsRow = cartBody.find(".cart-product");
+          const currentUrl = window.location.href;
+          const refreshCartUrl = "/api/cart/";
+          const refreshCartMethod = "GET";
+          const data = {};
+          
           $.ajax({
             url: refreshCartUrl,
             method: refreshCartMethod,
             data: data,
-            success: function(data){
-              console.log(data)
+            success: function (data) {
+              console.log(data);
+              const hiddenCartItemRemoveForm = $(".cart-item-remove-form");
+              if (data.products.length > 0) {
+                productsRow.html(" ");
+                let i = data.products.length;
+                $.each(data.products, function (index, value) {
+                  const newCartItemRemove = hiddenCartItemRemoveForm.clone();
+                  newCartItemRemove.css("display", "block");
+                  newCartItemRemove.find(".cart-item-product-id").val(value.id);
+                  cartBody.prepend(
+                    '<tr><th scope="row">' +
+                      i +
+                      "</th><td><a href='" +
+                      value.url +
+                      "'>" +
+                      value.name +
+                      "</a>" +
+                      newCartItemRemove.html() +
+                      "</td><td>" +
+                      value.price +
+                      "</td></tr>"
+                  );
+                  i--;
+                });
+                cartBody.find(".cart-subtotal").text(data.subtotal);
+                cartBody.find(".cart-total").text(data.total);
+              } else {
+                window.location.href = currentUrl;
+              }
             },
-            
-            error: function(errorData){
-              console.log("Erro")
-              console.log("Erro:" errorData)
-            }
-          })
+            error: function (errorData) {
+              console.log("Erro");
+              console.log(errorData);
+            },
+          });
         }
       });
     </script>

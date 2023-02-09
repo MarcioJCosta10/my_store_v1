@@ -31,7 +31,7 @@ def cart_detail_api_view(request):
   #  for x in cart_obj.products.all():
   #    products_list.append(
   #      {
-  #       "name": x.name, 
+  #       "name": x.title, 
   #       "price": x.price  
   #      }
   #    )
@@ -64,7 +64,7 @@ def cart_update(request):
                 "removed": not added,
                 "cartItemCount": cart_obj.products.count()
             }
-        return JsonResponse(json_data)
+            return JsonResponse(json_data)
     return redirect("cart:home")
 
 def checkout_home(request):
