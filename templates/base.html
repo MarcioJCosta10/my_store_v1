@@ -34,23 +34,24 @@
             method: httpMethod,
             data: formData,
             success: function (data) {
-              console.log("Sucesso");
-              console.log(data);
-              console.log("Adicionado", data.added)
-              console.log("Removido", data.removed)
-               const submitSpan = thisForm.find(".submit-span")
-              console.log(submitSpan.html())
-              if(data.added){
-                  submitSpan.html("No carrinho <button type='submit' class='btn btn-link'>Excluir</button>")
-              } else{
-                  submitSpan.html("<button type='submit' class='btn btn-success'>Adicionar</button>")
+              //console.log("Sucesso");
+              //console.log(data);
+              //console.log("Adicionado", data.added)
+              //console.log("Removido", data.removed)
+              const submitSpan = thisForm.find(".submit-span");
+              console.log(submitSpan.html());
+              if (data.added) {
+                submitSpan.html("No carrinho <button type='submit' class='btn btn-link'>Excluir</button>");
+              } else {
+                submitSpan.html("<button type='submit' class='btn btn-success'>Adicionar</button>");
               }
-              const navbarCount = $(".navbar-cart-count")
-                  navbarCount.text(data.cartItemCount)
-                  const currentPath = window.location.href
-                  if(currentPath.indexOf("cart")!=-1){
-                  refreshCart()
-                  }
+              const navbarCount = $(".navbar-cart-count");
+              navbarCount.text(data.cartItemCount);
+
+              const currentPath = window.location.href;
+              if (currentPath.indexOf("cart") != -1) {
+                refreshCart();
+              }
             },
             error: function (errorData) {
               console.log("Erro");
@@ -58,8 +59,11 @@
             },
           });
         });
-        function refreshCart(){
-          console.log("No carrinho atual")
+        function refreshCart() {
+          console.log("Excluido do carrinho atual");
+          const cartTable = $(".cart-table");
+          const cartBody = cartTable.find(".cart-body");
+          cartBody.html("<h1> Mudou! </h1>");
         }
       });
     </script>
