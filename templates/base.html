@@ -24,7 +24,8 @@
         const searchForm = $(".search-form")
         const searchInput = searchForm.find("[name='q']")
         const typingTimer = 0;
-        const typingInterval = 1500 // 1.5 seconds
+        const typingInterval = 1500 //500 // 1.5 seconds
+        const searchBtn = searchForm.find("[type='submit']")
         searchInput.keyup(function(event){
             console.log(event)
             console.log(searchInput.val())
@@ -32,6 +33,21 @@
             clearTimeout(typingTimer)
             const typingTimer = setTimeout(peformSearch, typingInterval)
         })
+
+        function displaySearching(){
+            searchBtn.addClass("disabled")
+            searchBtn.html("<i class='fa fa-spin fa-spinner'></i> Searching...")
+        }
+        
+        function peformSearch(){
+            displaySearching()
+            const query = searchInput.val()
+            window.location.href = '/search/?q=' + query
+
+               //setTimeout(function(){
+              //window.location.href='/search/?q=' + query
+           //}, 1000)
+        }
 
          //Cart + Add Product
         const productForm = $(".form-product-ajax");
