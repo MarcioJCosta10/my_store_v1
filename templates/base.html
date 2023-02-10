@@ -27,8 +27,12 @@
         const typingInterval = 1500 // 1.5 seconds
         searchInput.keyup(function(event){
             console.log(event)
+            console.log(searchInput.val())
+
+            clearTimeout(typingTimer)
+            const typingTimer = setTimeout(peformSearch, typingInterval)
         })
-        
+
          //Cart + Add Product
         const productForm = $(".form-product-ajax");
         productForm.submit(function (event) {
