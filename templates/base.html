@@ -19,37 +19,40 @@
 
     <script>
       $(document).ready(function () {
-
         // Auto Search
-        const searchForm = $(".search-form")
-        const searchInput = searchForm.find("[name='q']")
+        const searchForm = $(".search-form");
+        const searchInput = searchForm.find("[name='q']"); // pega name no input do searchForm
         const typingTimer = 0;
-        const typingInterval = 1500 //500 // 1.5 seconds
-        const searchBtn = searchForm.find("[type='submit']")
-        searchInput.keyup(function(event){
-            console.log(event)
-            console.log(searchInput.val())
+        const typingInterval = 1500; //500 // 1.5 seconds
+        const searchBtn = searchForm.find("[type='submit']");
 
-            clearTimeout(typingTimer)
-            const typingTimer = setTimeout(peformSearch, typingInterval)
-        })
+        searchInput.keyup(function (event) {
+          //console.log(event);
+          //console.log(searchInput.val());
+          clearTimeout(typingTimer);
+          // key released
+          typingTimer = setTimeout(performSearch, typingInterval);
+        });
 
-        function displaySearching(){
-            searchBtn.addClass("disabled")
-            searchBtn.html("<i class='fa fa-spin fa-spinner'></i> Searching...")
-        }
-        
-        function peformSearch(){
-            displaySearching()
-            const query = searchInput.val()
-            window.location.href = '/search/?q=' + query
+        searchInput.keydow(function (event) {
+          //key pressed
+          clearTimeout(typingTimer);
+        });
 
-               //setTimeout(function(){
-              //window.location.href='/search/?q=' + query
-           //}, 1000)
+        function displaySearching() {
+          searchBtn.addClass("disabled");
+          searchBtn.html("<i class='fa fa-spin fa-spinner'></i>Buscando...");
         }
 
-         //Cart + Add Product
+        function performSearch() {
+          displaySearching();
+          const query = searchInput.val();
+          setTimeout(function () {
+            window.location.href = "/search/?q=" + query;
+          }, 1000);
+        }
+
+        //Cart + Add Produc
         const productForm = $(".form-product-ajax");
         productForm.submit(function (event) {
           event.preventDefault();
@@ -100,7 +103,7 @@
           const refreshCartUrl = "/api/cart/";
           const refreshCartMethod = "GET";
           const data = {};
-          
+
           $.ajax({
             url: refreshCartUrl,
             method: refreshCartMethod,
