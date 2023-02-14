@@ -54,11 +54,12 @@
               }
             },
             error: function (errorData) {
-            $.alert({
+              $.alert({
                 title: "Oops!",
                 content: "Ocorreu um erro, tente mais tarde novamente!",
-                theme: "modern",
-            })              console.log("Erro");
+                theme: "dark",
+              });
+              console.log("Erro");
               console.log(errorData);
             },
           });
@@ -110,11 +111,11 @@
               }
             },
             error: function (errorData) {
-                 $.alert({
+              $.alert({
                 title: "Oops!",
                 content: "Ocorreu um erro, tente mais tarde novamente!",
-                theme: "modern",
-              })
+                theme: "dark",
+              });
               console.log("Erro");
               console.log(errorData);
             },
