@@ -54,6 +54,7 @@
               }
             },
             error: function (errorData) {
+              alert("Ocorreu um erro, tente mais tarde novamente!");
               console.log("Erro");
               console.log(errorData);
             },
@@ -69,7 +70,7 @@
           const refreshCartUrl = "/api/cart/";
           const refreshCartMethod = "GET";
           const data = {};
-          
+
           $.ajax({
             url: refreshCartUrl,
             method: refreshCartMethod,
