@@ -54,8 +54,11 @@
               }
             },
             error: function (errorData) {
-              $.alert("Ocorreu um erro, tente mais tarde novamente!");
-              console.log("Erro");
+            $.alert({
+                title: "Oops!",
+                content: "Ocorreu um erro, tente mais tarde novamente!",
+                theme: "modern",
+            })              console.log("Erro");
               console.log(errorData);
             },
           });
