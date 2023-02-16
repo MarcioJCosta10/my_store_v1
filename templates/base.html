@@ -33,13 +33,18 @@
             submitBtn.html(defaultText);
           }
         }
+        //submeter dados do form com a function submit
         contactForm.submit(function (event) {
           event.preventDefault();
+
           const contactFormSubmitBtn = contactForm.find("[type='submit']");
           const contactFormSubmitBtnTxt = contactFormSubmitBtn.text();
+
           const contactFormData = contactForm.serialize();
           const thisForm = $(this);
+
           displaySubmitting(contactFormSubmitBtn, "", true);
+
           $.ajax({
             method: contactFormMethod,
             url: contactFormEndpoint,
@@ -53,7 +58,7 @@
               });
               setTimeout(function () {
                 displaySubmitting(contactFormSubmitBtn, contactFormSubmitBtnTxt, false);
-              }, 500);
+              }, 2000);
             },
             error: function (error) {
               console.log(error.responseJSON);
@@ -69,7 +74,7 @@
               });
               setTimeout(function () {
                 displaySubmitting(contactFormSubmitBtn, contactFormSubmitBtnTxt, false);
-              }, 500);
+              }, 2000);
             },
           });
         });
