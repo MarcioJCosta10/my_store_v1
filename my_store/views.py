@@ -1,6 +1,9 @@
 from django.contrib.auth import authenticate, get_user_model
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
+from datetime import date
+
+
 
 from .forms import ContactForm
 
@@ -9,11 +12,14 @@ def is_ajax(request):
   
 def home_page(request):
     context = {
-                    "title": "Home Page",
-                    "content": "Bem vindo a Home Page",
+                    "title": "SheBanG #️⃣❗️",
+                    "content": "welcome!",
               }
     if request.user.is_authenticated:
-        context["premium_content"] = "Você é um usuário Premium"
+        data_atual = date.today()
+        print(data_atual)
+        context["premium_content"] = data_atual
+        context["emojiStar"] = "✨"
     return render(request, "home_page.html", context)
     
 def about_page(request):
