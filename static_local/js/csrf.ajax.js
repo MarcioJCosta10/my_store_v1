@@ -25,9 +25,9 @@ $(document).ready(function () {
     beforeSend: function (xhr, settings) {
       // csrfSafeMethod() return false to POST and
       if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-        // console.log("Settings Type: " + settings.type)
-        // console.log("CSRF TOKEN: " + csrftoken)
-        // console.log("XHR: " + xhr.global)
+         console.log("Settings Type: " + settings.type)
+         console.log("CSRF TOKEN: " + csrftoken)
+         console.log("XHR: " + xhr.global)
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
       }
     },
