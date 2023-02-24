@@ -29,6 +29,7 @@ class ContactForm(forms.Form):
             }
         )
     )
+    
     # test validations and fields
     #def clean_email(self):
     #    email = self.cleaned_data.get("email")
