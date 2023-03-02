@@ -1,12 +1,48 @@
 {% extends "base.html" %} {% block content %}
-<div class="container py-5">
+  {% load crispy_forms_tags %} 
+<div class="container py-5 text-center">
 
-	<form method="POST">
-		{% csrf_token %}
-		{{ form }}                    
-		<button class="btn btn-primary" type="submit">Register</button>
-	</form>
-	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+	<form method="post">
+          {% csrf_token %}
+          <div class="row py-3">
+            <div class="col-lg-9 col-md-4">
+              <div class="text-center">Nome: {{form.username }}</div> 
+            </div>
+          </div>
+           <div class="row py-3">
+            <div class="col-lg-9 col-md-12">
+               <div class="text-center">Email: {{form.email}}</div> 
+              
+            </div>
+          </div>
+          <div class="row py-3">
+            <div class="col-lg-8 col-md-12">
+               <div class="text-center"> Digitar sua Senha: {{form.password}}</div> 
+             
+            </div>
+          </div>
+           <div class="row py-3">
+            <div class="col-lg-8 col-md-12">
+               <div class="text-center"> Confirme a senha: {{form.password2}}</div> 
+              
+            </div>
+          </div>
+          <div class="row py-3">
+            <div class="col-lg-9 col-md-12">
+              <button type="submit ">Registrar</button>
+            </div>
+          </div>
+               <div class="row py-3">
+            <div class="col-lg-9 col-md-12">
+             	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+            </div>
+          </div>
+          </form>
+
+          
+
+  
+
 </div>
 {% endblock %}
 
