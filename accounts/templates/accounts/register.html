@@ -1,9 +1,13 @@
-{% extends "base.html" %} 
-{% block content %}
-<form method="POST">
-  {%csrf_token%}
-  {{form}}
-  <button type="submit" class="btn btn-default">Enviar</button>
-  
-</form>
+{% extends "base.html" %} {% block content %}
+<div class="container py-5">
+
+	<form method="POST">
+		{% csrf_token %}
+		{{ form }}                    
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+</div>
 {% endblock %}
+
+
