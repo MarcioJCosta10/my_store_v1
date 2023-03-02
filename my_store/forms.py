@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class ContactForm(forms.Form):
-    full_name = forms.CharField(
+    Nome = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
@@ -21,7 +21,7 @@ class ContactForm(forms.Form):
             }
         )
     )
-    content = forms.CharField(
+    Mensagem = forms.CharField(
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
